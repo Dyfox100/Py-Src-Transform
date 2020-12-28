@@ -13,8 +13,9 @@ jobs:
         with:
           python-version: 3.7
       - name: Install package and dependencies
-        run: python -m pip install --upgrade pip setuptools
-        run: python -m pip install .
+        run: |
+        python -m pip install --upgrade pip setuptools
+        python -m pip install .
       - name: Run Tests
         run: ls && pytest --html=test_report.html --self-contained-html --cov-report=html --cov pytransformation tests/
       - uses: actions/upload-artifact@v2
