@@ -17,12 +17,12 @@ jobs:
           python -m pip install --upgrade pip setuptools
           python -m pip install .
       - name: Run Tests
-        run: ls && pytest --html=test_report.html --self-contained-html --cov-report=html --cov pytransformation tests/
+        run: ls && pytest --html=test_report.html --self-contained-html --cov pytransformation tests/
       - uses: actions/upload-artifact@v2
         with:
           name: test_success_report
           path: ./test_report.html
-      - uses: actions/upload-artifact@v2
-        with:
-          name: coverage_report
-          path: ./htmlcov/
+      # - uses: actions/upload-artifact@v2
+      #   with:
+      #     name: coverage_report
+      #     path: ./htmlcov/
