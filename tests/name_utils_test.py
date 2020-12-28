@@ -22,5 +22,5 @@ def func():
     names_used = {'ast': None, 'func': None, 'x': None, 'len_x': None, 'y': None, 'len': None}
     assert(_get_all_used_variable_names(node) == names_used)
     
-def fail_test():
+def test_that_should_fail():
     assert(False)
