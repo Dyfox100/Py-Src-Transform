@@ -1,6 +1,9 @@
 # Jupyter notebooks, I sometimes use these for testing.
 *.ipynb
 
+# only html stuff is coverage reports
+*.html
+
 # Mac stuff
 .DS_Store
 
