@@ -2,3 +2,4 @@ astor>=0.8.1
 pytest
 pytest-cov
 pytest-html
+pytest-github-actions-annotate-failures
