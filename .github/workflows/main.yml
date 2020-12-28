@@ -15,4 +15,4 @@ jobs:
       - name: Install package and dependencies
         run: pip install .
       - name: Run Tests
-        run: ls && pytest --html=test_report.html --self-contained-html --cov-report=html --cov=pytransformation tests/
+        run: ls && pytest --html=test_report.html --self-contained-html --cov-report=html --cov pytransformation tests/
