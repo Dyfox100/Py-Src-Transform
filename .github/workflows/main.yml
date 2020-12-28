@@ -1,6 +1,6 @@
 name: Run Tests
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
@@ -15,4 +15,5 @@ jobs:
       - name: Install package and dependencies
         run: pip install .
       - name: Run Tests
-        run: pytest tests/
+        run: pytest --html=test_report.html --self-contained-html \
+          --cov-report=html --cov=pytransformation tests/
