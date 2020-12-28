@@ -19,7 +19,6 @@ jobs:
       - name: Run Tests
         run: pytest --html=test_report.html --self-contained-html \
         --cov-report term --cov-report html --cov pytransformation tests/
-      - name: Upload Test Reports
       - uses: actions/upload-artifact@v2
         with:
           name: test_success_report
