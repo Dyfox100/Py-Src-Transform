@@ -16,7 +16,7 @@ import ast
 def func():
     x = [1, 2, 3]
     len_x = len(x)
-    for y
+    for y in x:
         pass
 """)
     names_used = {'ast': None, 'func': None, 'x': None, 'len_x': None, 'y': None, 'len': None}

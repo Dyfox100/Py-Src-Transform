@@ -1,3 +1,6 @@
+# Jupyter notebooks, I sometimes use these for testing.
+*.ipynb
+
 # Mac stuff
 .DS_Store
 
