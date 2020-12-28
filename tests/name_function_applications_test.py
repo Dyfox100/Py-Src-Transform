@@ -1,7 +1,7 @@
 import ast
 import astor
 
-from ANF_transformer.transformer import _name_unnamed_applications
+from pytransformation import _name_unnamed_applications
 
 def test_name_function_applications_names_functions():
     src_string = \

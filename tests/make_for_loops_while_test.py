@@ -1,7 +1,7 @@
 import ast
 import astor
 
-from ANF_transformer.transformer import _make_for_loops_while
+from pytransformation import _make_for_loops_while
 
 def test_make_for_loops_while_loops():
     src_string = \

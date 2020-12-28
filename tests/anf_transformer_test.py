@@ -1,7 +1,7 @@
 import ast
 import astor
 
-from ANF_transformer.transformer import normalize_to_ANF
+from pytransformation import normalize_to_ANF
 
 def test_normalize_to_ANF():
     source_strings = []

@@ -8,4 +8,4 @@ if os.path.isfile(requirementPath):
     with open(requirementPath) as f:
         install_requires = list(f.read().splitlines())
 
-setup(name="ANF_transformer", install_requires=install_requires, packages=find_packages())
+setup(name="pytransformation", install_requires=install_requires, packages=find_packages())

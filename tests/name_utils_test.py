@@ -1,7 +1,7 @@
 import ast
 
-from ANF_transformer.transformer import _new_name
-from ANF_transformer.transformer import _get_all_used_variable_names
+from pytransformation import _new_name
+from pytransformation import _get_all_used_variable_names
 
 
 def test_get_new_name_does_not_dupclicate_names():

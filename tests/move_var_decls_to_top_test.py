@@ -1,7 +1,7 @@
 import ast
 import astor
 
-from ANF_transformer.transformer import _move_var_decls_to_top_of_scope
+from pytransformation import _move_var_decls_to_top_of_scope
 
 
 def test_move_var_decls_simple():
