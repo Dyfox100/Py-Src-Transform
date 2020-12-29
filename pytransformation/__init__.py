@@ -6,7 +6,6 @@ from .name_utils import _new_name
 from .name_utils import _get_all_used_variable_names
 
 
-
 __all__ = [
     _get_all_used_variable_names,
     _make_for_loops_while,
