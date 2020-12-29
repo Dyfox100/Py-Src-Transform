@@ -33,7 +33,7 @@ def _make_for_loops_while(parent_node, names_in_use):
         len_function_call = ast.Call(func=len_builtin_function, args=[for_loop.iter], keywords=[])
 
         #test for while loop
-        compare_op = ast.Compare(ast.Name(id=name_incrementor_variable, ctx=ast.Load),
+        compare_op = ast.Compare(left=ast.Name(id=name_incrementor_variable, ctx=ast.Load),
              ops=[ast.Lt()], comparators=[len_function_call])
 
         #assign current value of loop to for loop target
