@@ -20,5 +20,5 @@ def test_move_var_decls_to_top(test_and_result_strings):
         test_ast = test_ast.body[0]
     test_result_ast, _ = _move_var_decls_to_top_of_scope(test_ast, {})
     test_result_string = astor.to_source(test_result_ast)
-    print(test_result_string)
+
     assert(test_result_string == result_string)
