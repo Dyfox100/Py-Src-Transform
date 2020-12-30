@@ -50,9 +50,15 @@ def _find_vars_in_same_scope(node, vars_already_scoped):
     is_module = isinstance(node, ast.Module)
     is_function = isinstance(node, ast.FunctionDef)
     is_assign = isinstance(node, ast.Assign)
-    # Add current node if it's a variable assignment
-    if is_assign:
-        for target in node.targets:
+    is_for = isinstance(node, ast.For)
+    # Add current node if it's a variable assignment or target in for loop, and
+    # it hasn't been added to the initilization list.
+    if is_assign or is_for:
+        if is_for:
+            targets = [node.target]
+        else:
+            targets = node.targets
+        for target in targets:
             for var_name in find_names_helper(target):
                 if var_name not in vars_already_scoped:
                     current_scope_new_vars.append(var_name)
@@ -60,7 +66,7 @@ def _find_vars_in_same_scope(node, vars_already_scoped):
 
     # Recur down all children to find more vars, unless the node
     # opens a new scope.
-    elif not is_module and not is_function:
+    if not is_module and not is_function and not is_assign:
         for child_node in ast.iter_child_nodes(node):
             new_vars, vars_already_scoped = _find_vars_in_same_scope(
                                             child_node, vars_already_scoped)
