@@ -18,18 +18,18 @@ def _make_for_loops_while(parent_node, names_in_use):
     # Could be done cleaner with a numpy .where, but we'd have to import numpy
     # pretty much just for that.
     try:
-        def is_for(index):
-            return
         indxs_for_loops = []
         for indx in range(len(parent_node.body)):
             if isinstance(parent_node.body[indx], ast.For):
                 indxs_for_loops.append(indx)
-
     except AttributeError:
         # node has no body. No for loops in it.
         return parent_node, names_in_use
 
+    num_lines_inserted = 0
+
     for for_loop_index in indxs_for_loops:
+        for_loop_index = for_loop_index + num_lines_inserted
         for_loop = parent_node.body[for_loop_index]
 
         # Make loop incrementor variable.
@@ -70,6 +70,10 @@ def _make_for_loops_while(parent_node, names_in_use):
         # Insert loop incrementor variable before while loop and set to 0.
         inc_name = ast.Name(id=name_incrementor_variable, ctx=ast.Store)
         inc_0 = ast.Assign([inc_name], ast.Num(0))
-        parent_node.body.insert(for_loop_index - 1, inc_0)
+        parent_node.body.insert(for_loop_index, inc_0)
+
+        # Not the total lines inserted, only the lines inserted into the
+        # parent's body. (so not the lines inside the loop)
+        num_lines_inserted += 1
 
     return parent_node, names_in_use
