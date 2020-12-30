@@ -12,7 +12,6 @@ def test_and_result_strings(request):
     return request.param
 
 def test_make_for_loops_while_loops(test_and_result_strings):
-    print(test_and_result_strings)
     test_string = test_and_result_strings[0]
     result_string = test_and_result_strings[1]
 
