@@ -1,34 +1,23 @@
 import ast
 import astor
+import pytest
 
 from pytransformation import _make_for_loops_while
+from .test_file_utilities import get_all_test_and_result_files
 
-def test_make_for_loops_while_loops():
-    src_string = \
-"""
-y = []
-x = [1, 2, 3]
-for index in range(len(x)):
-    y[index] = x[index]
-"""
-    source_ast = ast.parse(src_string)
-    test_ast, test_names_in_use = _make_for_loops_while(source_ast, {})
+path_to_test_dir = "./test_files/for_to_while/"
 
-    result_string = \
-"""y = []
-loop_index0 = 0
-x = [1, 2, 3]
-while loop_index0 < len(range(len(x))):
-    index = range(len(x))[loop_index0]
-    y[index] = x[index]
-    loop_index0 += 1
-"""
-    #names in use tracks the current variable names in use.
-    #converting for to while loops should add any new names used to
-    #this hash table.
-    result_names_in_use = {'loop_index0': 1}
-    print(astor.to_source(test_ast))
-    print(result_string)
+@pytest.fixture(params=get_all_test_and_result_files(path_to_test_dir))
+def test_and_result_strings(request):
+    return request.param
 
-    assert(test_names_in_use == result_names_in_use)
-    assert(astor.to_source(test_ast) == result_string)
+def test_make_for_loops_while_loops(test_and_result_strings):
+    print(test_and_result_strings)
+    test_string = test_and_result_strings[0]
+    result_string = test_and_result_strings[1]
+
+    test_ast = ast.parse(test_string)
+    test_result_ast, _ = _make_for_loops_while(test_ast, {})
+    test_result_string = astor.to_source(test_result_ast)
+
+    assert(test_result_string == result_string)
