@@ -29,7 +29,7 @@ def get_all_test_and_result_files(dir_path):
     try:
         for test_num in sorted(list_of_test_numbers):
             files_to_close = []
-            test_file = "test_" + str(test_num) + ".py"
+            test_file = "testcase_" + str(test_num) + ".py"
             result_file = "result_" + str(test_num) + ".py"
             test = open(join(dir_path, test_file), "r")
             files_to_close.append(test)
