@@ -53,12 +53,12 @@ def func():
     result_strings.append(
 """def func():
     y = None
-    loop_index0 = None
     x = None
+    loop_index0 = None
     index = None
     y = []
-    loop_index0 = 0
     x = [1, 2, 3]
+    loop_index0 = 0
     while loop_index0 < len(range(len(x))):
         index = range(len(x))[loop_index0]
         y[index] = x[index]
