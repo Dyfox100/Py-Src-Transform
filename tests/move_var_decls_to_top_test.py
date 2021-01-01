@@ -5,9 +5,9 @@ import pytest
 from pytransformation import _move_var_decls_to_top_of_scope
 from .test_file_utilities import get_all_test_and_result_files
 
-path_to_test_dir = "./test_files/move_var_decls/"
+test_dir_name = "move_var_decls"
 
-@pytest.fixture(params=get_all_test_and_result_files(path_to_test_dir))
+@pytest.fixture(params=get_all_test_and_result_files("move_var_decls"))
 def test_and_result_strings(request):
     return request.param
 

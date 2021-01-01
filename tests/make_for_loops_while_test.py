@@ -5,9 +5,9 @@ import pytest
 from pytransformation import _make_for_loops_while
 from .test_file_utilities import get_all_test_and_result_files
 
-path_to_test_dir = "./test_files/for_to_while/"
+test_dir_name = "for_to_while"
 
-@pytest.fixture(params=get_all_test_and_result_files(path_to_test_dir))
+@pytest.fixture(params=get_all_test_and_result_files(test_dir_name))
 def test_and_result_strings(request):
     return request.param
 
