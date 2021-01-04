@@ -1,4 +1,4 @@
-exclude: ^tests/
+exclude: ^tests/test_files
 repos:
 -   repo: https://gitlab.com/pycqa/flake8
     rev: 3.7.9

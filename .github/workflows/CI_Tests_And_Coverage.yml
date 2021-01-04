@@ -22,17 +22,17 @@ jobs:
           python -m pip install .
           python -m pip install pytest --upgrade
       - name: Run Tests
-        run: pytest --html=test_report.html --self-contained-html --cov-report term --cov-report xml --cov pytransformation tests/
+        run: pytest --html=test_report.html --self-contained-html --cov-report term --cov-report xml --cov ../pytransformation tests/
       - name: Upload Test Report
         uses: actions/upload-artifact@v2
         with:
           name: test_success_report
-          path: ./test_report.html
+          path: test_report.html
       - name: Upload Coverage To Codecov
         uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage.xml
+          file: coverage.xml
           name: Coverage Report
           fail_ci_if_error: true
           verbose: false
