@@ -27,12 +27,12 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: test_success_report
-          path: tests/test_report.html
+          path: test_report.html
       - name: Upload Coverage To Codecov
         uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: tests/coverage.xml
+          file: coverage.xml
           name: Coverage Report
           fail_ci_if_error: true
           verbose: false
