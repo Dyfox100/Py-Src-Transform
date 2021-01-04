@@ -7,9 +7,11 @@ from .test_file_utilities import get_all_test_and_result_files
 
 test_dir_name = "move_var_decls"
 
+
 @pytest.fixture(params=get_all_test_and_result_files("move_var_decls"))
 def test_and_result_strings(request):
     return request.param
+
 
 def test_move_var_decls_to_top(test_and_result_strings):
     test_string = test_and_result_strings[0]

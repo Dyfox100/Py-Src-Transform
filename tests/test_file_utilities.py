@@ -1,5 +1,6 @@
 import os
 
+
 def get_all_test_and_result_files(dir_name):
     """Reads content of all test and result files in the directory at
     ./tet_files/<dir_name> into 2d array of strings. All files should be named
@@ -14,7 +15,6 @@ def get_all_test_and_result_files(dir_name):
     file_names = [f for f in os.listdir(absolute_path)
                   if os.path.isfile(os.path.join(absolute_path, f))]
     test_files = filter(lambda f: "test" in f, file_names)
-
 
     def get_number_from_test_file(file_name):
         file_without_dot_py = file_name.split(".py")[0]
@@ -43,7 +43,7 @@ def get_all_test_and_result_files(dir_name):
                 result = open(os.path.join(absolute_path, result_file), "r")
                 files_to_close.append(result)
                 result_strings.append(result.read())
-            except FileNotFoundError as e:
+            except FileNotFoundError:
                 msg = ("Result file not found for {}, did you mean to have a"
                        + "result file for {}?")
                 print(msg.format(test_file, test_file))
