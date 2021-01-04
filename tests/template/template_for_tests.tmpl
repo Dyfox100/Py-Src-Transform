@@ -5,7 +5,7 @@ import pytest
 # from pytransformation import <whatever you want to test>
 from .test_file_utilities import get_all_test_and_result_files
 
-# test_dir_name = <name of tests>
+test_dir_name = "${TEST_NAME}"
 
 @pytest.fixture(params=get_all_test_and_result_files(test_dir_name))
 def test_and_result_strings(request):
