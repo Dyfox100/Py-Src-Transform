@@ -37,14 +37,19 @@ def get_all_test_and_result_files(dir_name):
             files_to_close = []
             test = open(os.path.join(absolute_path, test_file), "r")
             files_to_close.append(test)
-            result = open(os.path.join(absolute_path, result_file), "r")
-            files_to_close.append(result)
-
             test_strings.append(test.read())
-            result_strings.append(result.read())
-    except IOError as e:
-        print("File not found!")
-        print("Do all of your test files have properly named result files?")
+
+            try:
+                result = open(os.path.join(absolute_path, result_file), "r")
+                files_to_close.append(result)
+                result_strings.append(result.read())
+            except FileNotFoundError as e:
+                msg = ("Result file not found for {}, did you mean to have a"
+                       + "result file for {}?")
+                print(msg.format(test_file, test_file))
+                result_strings.append("")
+    except Exception as e:
+        print("Error Opening and Reading From Test Files!")
         raise(e)
     finally:
         for file in files_to_close:
