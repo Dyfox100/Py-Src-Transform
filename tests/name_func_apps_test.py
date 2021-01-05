@@ -18,6 +18,8 @@ def test_name_func_apps(test_and_result_strings):
     result_string = test_and_result_strings[1]
 
     test_ast = ast.parse(test_string)
+    if isinstance(test_ast.body[0], ast.FunctionDef):
+        test_ast = test_ast.body[0]
     test_result_ast, _ = _name_unnamed_applications(test_ast, {})
     test_result_string = astor.to_source(test_result_ast)
 

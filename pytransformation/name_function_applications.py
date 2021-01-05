@@ -24,7 +24,7 @@ def _name_unnamed_applications(node, names_used):
 
         for index, statement in enumerate(node.body):
             try:
-                if isinstance(statement.value, ast. Call):
+                if isinstance(statement.value, ast.Call):
                     # loop through args.
                     # If arg is function call replace with new name in args.
                     # save function call in list.
@@ -61,6 +61,10 @@ def _name_unnamed_applications(node, names_used):
                 pass
 
         for child in ast.iter_child_nodes(node):
-            child, names_used = _name_unnamed_applications(child, names_used)
+            is_module = isinstance(child, ast.Module)
+            is_func_def = isinstance(child, ast.FunctionDef)
+            if not is_func_def and not is_module:
+                child, names_used = _name_unnamed_applications(child,
+                                                               names_used)
 
     return node, names_used
