@@ -1,4 +1,3 @@
-from .anf_transformer import normalize_to_ANF
 from .convert_for_loops_to_while import _make_for_loops_while
 from .move_var_decls_to_top_of_scope import _move_var_decls_to_top_of_scope
 from .name_function_applications import _name_unnamed_applications
@@ -12,6 +11,5 @@ __all__ = [
     _move_var_decls_to_top_of_scope,
     _name_unnamed_applications,
     _new_name,
-    normalize_to_ANF,
     Source_Code_Transformer
 ]
