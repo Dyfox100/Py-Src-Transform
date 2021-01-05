@@ -5,3 +5,4 @@ pytest
 pytest-cov
 pytest-html
 pytest-github-actions-annotate-failures
+pytest-mock

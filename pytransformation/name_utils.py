@@ -36,8 +36,6 @@ def _get_all_used_variable_names(ast_node):
             vars_used.append(node.id)
         elif isinstance(node, ast.FunctionDef):
             vars_used.append(node.name)
-        elif isinstance(node, ast.Attribute):
-            vars_used.append(node.attr)
         elif isinstance(node, ast.Import):
             for name in node.names:
                 vars_used.append(name.name)
