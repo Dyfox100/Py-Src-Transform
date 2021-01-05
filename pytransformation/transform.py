@@ -34,6 +34,3 @@ class Source_Code_Transformer(ast.NodeTransformer):
 
     def visit_Module(self, node):
         return self._visit_new_scope(node)
-
-    def visit_Lambda(self, node):
-        return self._visit_new_scope(node)
