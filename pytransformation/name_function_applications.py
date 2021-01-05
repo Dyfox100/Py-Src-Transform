@@ -21,7 +21,6 @@ def _bring_function_calls_up(function_call, names_used):
 
 def _name_unnamed_applications(node, names_used):
     if 'body' in node._fields:
-
         for index, statement in enumerate(node.body):
             try:
                 if isinstance(statement.value, ast.Call):
@@ -47,8 +46,9 @@ def _name_unnamed_applications(node, names_used):
                         index += 1
 
                     if isinstance(statement, ast.Expr):
-                        # Have to re initilize the call of for some reason,
-                        # astor puts it on a new line otherwise.
+                        # Rename the outer function call first
+                        # Have to re initilize the call. Astor puts it on a new
+                        # line otherwise, which looks ugly.
                         targets = [
                             ast.Name(id=name_application, ctx=ast.Store)
                         ]
@@ -58,9 +58,12 @@ def _name_unnamed_applications(node, names_used):
                         node.body[index] = ast.Assign(targets=targets,
                                                       value=value)
             except AttributeError:
+                # Node has no body, so it cannot have function calls,
+                # unless it is a function, but we hadle that above.
                 pass
 
         for child in ast.iter_child_nodes(node):
+            # iterate through children unless child opens new scope.
             is_module = isinstance(child, ast.Module)
             is_func_def = isinstance(child, ast.FunctionDef)
             if not is_func_def and not is_module:
