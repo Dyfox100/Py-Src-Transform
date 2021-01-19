@@ -45,5 +45,5 @@ class File_Transformer(String_Transformer):
                 out_file: file path to write transformed source code to.
         """
         src_code_str = self._read_file(in_file)
-        new_source_str = String_Transformer.transform(src_code_str)
+        new_source_str = String_Transformer.transform(self, src_code_str)
         self._write_to_file(out_file, new_source_str)
