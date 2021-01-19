@@ -1,11 +1,11 @@
 import pytest
 
-import pytransformation
-from pytransformation import Source_Code_Transformer
+from pytransformation import String_Transformer
+from pytransformation import Transformations
 from .test_file_utilities import get_all_test_and_result_files
 
 
-test_dir_name = "source_code_transformer"
+test_dir_name = "string_transformer"
 
 
 @pytest.fixture(params=get_all_test_and_result_files(test_dir_name))
@@ -15,14 +15,16 @@ def test_and_result_strings(request):
 
 @pytest.fixture(scope="function")
 def transformer_and_mocks(mocker):
-    mock1 = mocker.spy(pytransformation, "_move_var_decls_to_top_of_scope")
-    mock2 = mocker.spy(pytransformation, "_make_for_loops_while")
+    mock1 = mocker.spy(Transformations, "MOVE_DECLS_TO_TOP_OF_SCOPE")
+    mock2 = mocker.spy(Transformations, "MAKE_FOR_LOOPS_WHILE")
+    mock3 = mocker.spy(Transformations, "NAME_ALL_FUNCTION_APPLICATIONS")
 
-    transformer = Source_Code_Transformer([
-        pytransformation._move_var_decls_to_top_of_scope,
-        pytransformation._make_for_loops_while
+    transformer = String_Transformer([
+        Transformations.MAKE_FOR_LOOPS_WHILE,
+        Transformations.MOVE_DECLS_TO_TOP_OF_SCOPE,
+        Transformations.NAME_ALL_FUNCTION_APPLICATIONS,
     ])
-    return (transformer, (mock1, mock2))
+    return (transformer, (mock1, mock2, mock3))
 
 
 def test_SCT_calls_transfroms_correct_num_times(mocker,

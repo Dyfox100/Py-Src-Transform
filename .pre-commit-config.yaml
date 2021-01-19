@@ -1,6 +1,6 @@
-exclude: ^tests/test_files
+exclude: ^tests/test_files|^pytransformation/__init__\.py
 repos:
--   repo: https://gitlab.com/pycqa/flake8
+  - repo: https://gitlab.com/pycqa/flake8
     rev: 3.7.9
     hooks:
     - id: flake8
