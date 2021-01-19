@@ -2,10 +2,11 @@ import ast
 import astor
 
 
-class Source_Code_Transformer(ast.NodeTransformer):
+class String_Transformer(ast.NodeTransformer):
     """Iterates through source code in src, finding ever location that opens
     a new scope. At each scope level, performs the transformations in
-    transformations_to_perform.
+    transformations_to_perform. The transformations should be specified in the
+    via a list of transformations from the enum.
         Parameters:
         transformations_to_perform: list of functions
         Returns:
