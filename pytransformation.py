@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import argparse
 import os
 
@@ -23,7 +25,7 @@ def main(args):
             return
 
     input_is_file = (in_path[-3:] == '.py') and (os.path.isfile(in_path))
-    output_is_file = (out_path[-3:] == '.py') and (os.path.isfile(out_path))
+    output_is_file = (out_path[-3:] == '.py')
     both_files = input_is_file and output_is_file
 
     input_is_dir = (in_path[-1] == os.sep) and (os.path.isdir(in_path))
@@ -52,8 +54,12 @@ def main(args):
     if both_files:
         transformer.transform(in_path, out_path)
     elif both_dirs:
+        if not os.path.isdir(out_path):
+            os.mkdir(out_path)
         in_dir = os.listdir(in_path)
-        files = [f for f in in_dir if os.path.isfile(f) and f[-3:] == '.py']
+
+        files = [f for f in in_dir if
+                 os.path.isfile(os.path.join(in_path, f)) and f[-3:] == '.py']
         for file in files:
             out_file_path = os.path.join(out_path, file)
             in_file_path = os.path.join(in_path, file)

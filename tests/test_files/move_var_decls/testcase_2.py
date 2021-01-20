@@ -1,5 +1,5 @@
 # Tests that variables are initilized at the top of scope when multiple scopes
-# are available.
+# are available. Also tests that parameters are not re-initilized.
 test = 1
 def func(parameter):
     x = [1, 2, 3, 4]

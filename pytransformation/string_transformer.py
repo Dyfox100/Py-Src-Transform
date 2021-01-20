@@ -25,7 +25,7 @@ class String_Transformer(ast.NodeTransformer):
 
     def _visit_new_scope(self, node):
         for transform in self._transforms:
-            node, self._names_in_use = transform(node, self._names_in_use)
+            node, _ = transform(node, {})
         for child in ast.iter_child_nodes(node):
             self.visit(child)
         return node
