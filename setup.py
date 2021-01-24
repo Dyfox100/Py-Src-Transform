@@ -17,7 +17,7 @@ setup(name="pytransformation",
       author='Dylan Fox',
       author_email='dylan.fox@colorado.edu',
       url='https://github.com/Dyfox100/pytransformation',
-      download_url='https://github.com/Dyfox100/pytransformation/archive/v_01.tar.gz',  # noqa: E251, E501
+      download_url='https://github.com/Dyfox100/pytransformation/archive/v0.1.tar.gz',  # noqa: E251, E501
       classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
