@@ -20,8 +20,16 @@ def _make_for_loops_while(parent_node, names_in_use):
     try:
         indxs_for_loops = []
         for indx in range(len(parent_node.body)):
-            if isinstance(parent_node.body[indx], ast.For):
+            current = parent_node.body[indx]
+            if isinstance(current, ast.For):
                 indxs_for_loops.append(indx)
+            if hasattr(current, "body"):
+                is_module = isinstance(current, ast.Module)
+                is_func_def = isinstance(current, ast.FunctionDef)
+                if not is_func_def and not is_module:
+                    current, names_in_use = _make_for_loops_while(current,
+                                                                  names_in_use)
+
     except AttributeError:
         # node has no body. No for loops in it.
         return parent_node, names_in_use
