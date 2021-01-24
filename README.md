@@ -9,12 +9,22 @@ Pytransformation is a library to perform various source code transformations on 
 #### Converting For Loops to While Loops
 Pytransformation can convert all for loops in Python source code to While loops. The only restrictions are that the iterator in the for loop must be indexable. See below: 
 
+Input             |  Output
+:-------------------------:|:-------------------------:
+![](https://github.com/Dyfox100/pytransformation/blob/main/example_photos/for2while_input.png)  |  ![](https://github.com/Dyfox100/pytransformation/blob/main/example_photos/for2while_output.png)
+
 #### Moving First Use of Variables to the Top of Scope
 Pytransformation also supports moving the first use of variables to the top of the scope they exist in. This eliminates variable declaration hoisting. See below:
 
+Input             |  Output
+:-------------------------:|:-------------------------:
+![](https://github.com/Dyfox100/pytransformation/blob/main/example_photos/move_var_decls_input.png)  |  ![](https://github.com/Dyfox100/pytransformation/blob/main/example_photos/move_var_decls_output.png)
 #### Naming Function Applications
 Pytransformation can name un-nammed function applications. This will name all function applications irregardless of where they exist. Nested function applications will be pulled out and named. See below:
 
+Input             |  Output
+:-------------------------:|:-------------------------:
+![](https://github.com/Dyfox100/pytransformation/blob/main/example_photos/name_func_apps_input.png)  |  ![](https://github.com/Dyfox100/pytransformation/blob/main/example_photos/name_func_outputs.png)
 
 ## Usage
 #### As a script
